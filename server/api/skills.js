@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const { getAllExperience, getExperienceById } = require('../db/sqlHelperFunctions/experience');
+const { getAllSkills, getSkillsById } = require('../db/sqlHelperFunctions/skills');
 
 router.get('/', async (req, res, next) => {
   try {
-    const experience = await getAllExperience();
-    res.send(experience);
+    const skills = await getAllSkills();
+    res.send(skills);
   } catch (error) {
     next(error);
   }
@@ -14,8 +14,8 @@ router.get('/', async (req, res, next) => {
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const experience = await getExperienceById(req.params.id);
-    res.send(experience);
+    const skills = await getSkillsById(req.params.id);
+    res.send(skills);
   } catch (error) {
     next(error);
   }

@@ -1,33 +1,33 @@
 const client = require('../client');
 const util = require('util');
 
-async function getAllExperience() {
+async function getAllSkills() {
   try {
-    const { rows: experience } = await client.query('SELECT * FROM experience ORDER BY name');
-    return games;
+    const { rows: skills } = await client.query('SELECT * FROM skills ORDER BY name');
+    return skills;
   } catch (error) {
     throw new Error('Unable to retrieve experience');
   }
 }
 
-async function getExperienceById(id) {
+async function getSkillsById(id) {
   try {
     const {
-      rows: [experience],
+      rows: [skill],
     } = await client.query(
       `
-            SELECT * FROM experience
+            SELECT * FROM skills
             WHERE id = $1;
         `,
       [id]
     );
-    return experience;
+    return skill;
   } catch (error) {
     throw error;
   }
 }
 
 module.exports = {
-  getAllExperience,
-  getExperienceById,
+  getAllSkills,
+  getSkillsById,
 };
