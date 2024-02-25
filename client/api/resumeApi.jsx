@@ -59,6 +59,10 @@ export const resumeApi = createApi({
                 body: {...data},
             }),
         }),
+        updateUser: (state, {payload}) => {
+            state.user = payload;
+            sessionStorage.setItem('user', JSON.stringify(state.user));
+        },
         updateEmail: builder.mutation({
             query: (data) => ({
                 url: `/user/email`,
